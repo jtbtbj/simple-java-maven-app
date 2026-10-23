@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker --version'
+                sh 'docker1 --version'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
