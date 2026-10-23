@@ -17,6 +17,10 @@ pipeline {
             }
          }
 
+
+
+   
+
              
     }
     post {
@@ -25,4 +29,11 @@ pipeline {
             archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
         }
     }
+
+
+         stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+            }
+        }
 }
