@@ -1,10 +1,14 @@
 pipeline {
-    agent any 
+    agent any
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh '''
+                docker run --rm -v $PWD:/app -v /home/.m2:/root/.m2 maven:3-alpine \
+                mvn -B -DskipTests -f /app clean package
+                '''
             }
         }
     }
 }
+
